@@ -177,8 +177,10 @@ function save() {
 		var age = document.getElementById('age').value;
 		var gender = document.getElementById('gender').value;
 
-		if( lib.isNew() ) {
+		try {
 			lib.createTable("people", ["name", "age", "gender"]);
+		} catch (e) {
+
 		}
 
 		lib.insert("people", {name: name, age: age, gender: gender});
