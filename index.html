@@ -95,31 +95,23 @@
    isOnline();
   }, 250);
 
+  function isOnline1() {
+  	return navigator.onLine;
+  }
 
   function isOnline() {
 	var statusElem = document.getElementById('status'); 
-  	$.ajax({url: "http://google.co.uk",
-        type: "HEAD",
-        timeout:2000,
-        statusCode: {
-            200: function (response) {
-                isonLine = 'YES';
-                statusElem.className = 'online'; 
-   				statusElem.innerHTML = 'online';
-            },
-            400: function (response) {
-                isonLine = 'NO';
-                statusElem.className = 'offline'; 
-   				statusElem.innerHTML = 'offline';
-            },
-            0: function (response) {
-                isonLine = 'NO';
-                statusElem.className = 'offline'; 
-   				statusElem.innerHTML = 'offline';
-            }              
-        }
- 		
- 	});
+
+	if (navigator.onLine) {
+		 isonLine = 'YES';
+         statusElem.className = 'online'; 
+   	     statusElem.innerHTML = 'online';
+	}
+	else {
+		isonLine = 'NO';
+        statusElem.className = 'offline'; 
+   		statusElem.innerHTML = 'offline';
+	}
 
     return isonLine;
   }
