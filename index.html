@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body onload = "bindTable()">
 <section id="wrapper">
     <header style="text-align:center">
       <h1>Offline First! Web</h1>
@@ -177,9 +177,9 @@ function save() {
 		var age = document.getElementById('age').value;
 		var gender = document.getElementById('gender').value;
 
-		//if( lib.isNew() ) {
+		if( lib.isNew() ) {
 			lib.createTable("people", ["name", "age", "gender"]);
-		//}
+		}
 
 		lib.insert("people", {name: name, age: age, gender: gender});
 		
