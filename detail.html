@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html manifest="employee.appcache">
+<head>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<script>
+
+
+
+	function getEmployeeDetail() {
+
+    	   const dbName = "employees";
+		    var request = indexedDB.open(dbName, 2);
+		    var id = location.search.replace(/^.*?\=/, '');
+
+		    var searchTerm = $("#txtSearch").val();
+		    var employeeListItem = $("#employeeListItem");
+
+		    request.onerror = function(event) {
+		      // Handle errors.
+		    };
+		    request.onsuccess = function(event) {
+		      var db = event.target.result;
+			     db.transaction("users").objectStore("users").get(parseInt(id)).onsuccess = function(event) {
+				  drawEmployee(event.target.result);
+				};
+
+			};
+		}
+
+	function drawEmployee(data) {
+		console.log(JSON.stringify(data));
+		$("#employeeDetail").append("<li class='collection-item avatar'><img class = 'circle' src = '" + data.photo + "' /><span class='title'>" + data.name + "</span><p>" + data.title + "</p></li>");
+
+		$("#links").append("<a href='#!' class='collection-item'>Phone Office</a><a href='#!' class='collection-item'>Phone Mobile</a><a href='#!' class='collection-item'>Email</a><a href='#!' class='collection-item'>SMS</a>");
+
+
+	}
+
+
+
+
+	</script>
+<meta charset="UTF-8">
+<title>Kainos Phonebook</title>
+
+</head>
+
+<body onload="getEmployeeDetail()">
+	<nav id = "nav" class="top-nav">
+		<a href="home.html" class="button-collapse top-nav waves-effect waves-light circle"><i class="mdi-hardware-keyboard-backspace"></i></a>
+        <div class="container">
+
+          <div class="nav-wrapper"><a class="page-title">Employee</a></div>
+        </div>
+      </nav>
+       <div >
+         <ul id = "employeeDetail" class="collection">
+
+         </ul>
+         <div id = "links" class = "collection">
+         </div>
+
+      </div>
+
+	 
+</body>
+
+</html>
