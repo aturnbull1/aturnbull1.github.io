@@ -5,6 +5,8 @@ self.addEventListener('install', function(event) {
         'index.html',
         'app.js'
       ]);
+
+      console.log('Added To Cache');
     })
   );
 });
