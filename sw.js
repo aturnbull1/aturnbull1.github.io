@@ -15,7 +15,8 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         'script.js',
         'logging.js',
-        'serviceworker-cache-polyfill.js'
+        'serviceworker-cache-polyfill.js',
+         new Request('https://upload.wikimedia.org/wikipedia/en/2/2d/Kainos_Software_headquarters_in_Belfast.jpg', {mode: 'no-cors'})
 
       ]);
     })
