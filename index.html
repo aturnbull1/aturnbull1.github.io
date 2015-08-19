@@ -1,8 +1,29 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <script src="app.js" type="javascript"></script>
-</head>
-<body>
-<h2>Hello SxSW</h2>
-</body>
+  <head>
+    <title>Super Simple ServiceWorker</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <h1>Simple ServiceWorker</h1>
+    <label id = "subtitle"></label>
+    <br/>
+    <img src="https://upload.wikimedia.org/wikipedia/en/2/2d/Kainos_Software_headquarters_in_Belfast.jpg" />
+    <script>
+    // if browser supports serviceworker
+    if ('serviceWorker' in navigator) {
+      // Let's register our serviceworker
+      navigator.serviceWorker.register('sw.js', {
+        scope: '/'
+      }).then(function(registration) {
+        console.log("Service Worker Registered :)")
+      }).catch(function(err) {
+        console.log('Service Worker Registration Failed: ',  err);
+      });
+
+    }
+    </script>
+    <script src="logging.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
