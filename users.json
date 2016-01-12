@@ -1,0 +1,8 @@
+{"employees":[
+    {"id" : 1, "name" : "Kermit the frog", "photo" : "photo/Kermit_the_Frog.jpg", "landline_number" : "02891647384", "mobile_number" : "07597310640", "email" : "kermit@kainos.com"},
+    {"id" : 2, "name" : "Miss Piggy", "photo" : "photo/MissPiggy.jpg", "landline_number" : "02891674384", "mobile_number" : "07597363640", "email" : "misspiggy@kainos.com"},
+    {"id" : 3, "name" : "Gonzo", "photo":"photo/gonzo.jpg", "landline_number" : "02891664384", "mobile_number" : "07597363646", "email" : "gonzo@kainos.com"},
+    {"id" : 4, "name" : "Fozzie Bear", "photo":"photo/Fozzie_Bear.jpg", "landline_number" : "02891664384", "mobile_number" : "07597363646", "email" : "gonzo@kainos.com"},
+    {"id" : 5, "name" : "Rowlf the Dog", "photo":"photo/Rowlf_the_Dog.jpg", "landline_number" : "02891664384", "mobile_number" : "07597363646", "email" : "gonzo@kainos.com"}
+    {"id" : 6, "name" : "Scooter", "photo":"photo/Scooter.jpg", "landline_number" : "02891664384", "mobile_number" : "07597363646", "email" : "gonzo@kainos.com"}
+]}
