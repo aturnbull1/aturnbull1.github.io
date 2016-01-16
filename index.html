@@ -1,45 +1,51 @@
-<!DOCTYPE html>
-<html>
+<html manifest="offline.appcache">
 <head>
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <script type="text/javascript" src="js/index.js"></script>
+  <script src="js/jquery-2.1.4.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <script src="js/jquery-2.1.4.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-  
-
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-
-          $("#btnSearch").click(function(){
-              searchName($("#btnSearch").val());
-          }); 
-      });
-
-  </script>
-  <title>Offline Phonebook</title>
 </head>
+
 <body>
-	 <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Offline Phonebook</a></div>
-        </div>
-      </nav>
-      <div className="bar bar-standard bar-header-secondary">
-              <input id = "txtSearch" type="search"/>
-              <button id = 'btnSearch' style="width:100%" class="waves-effect waves-light btn">Search</button>
+  <nav class="top-nav light-blue darken-4">
+    <div id="top-nav-container" class="container" style="width: 100%">
+      <span style="padding-left:20px; font-weight:300; font-size:20px;" class="card-title">Offline City Guide</span>
+    </div>
+  </nav>
+  <div class="card">
+    <a href = "attractions.html">
+      <div class="card-image">
+        <img src="images/causeway.jpg">
+        <span class="card-title">Things To Do</span>
       </div>
+    </a>
+  </div>
 
-      <ul id = "employeeListItem" class="collection">
-      
-     </ul>
+  <div class="card">
+    <a href ="restaurants.html">
+      <div class="card-image">
+        <img src="images/resturant.jpg">
+        <a><span class="card-title">Restaurants</span></a>
+      </div>
+    </a>
+  </div>
 
-      
+  <div class="card">
+    <a href ="report.html">
+      <div class="card-image">
+        <img src="images/pothole.jpg">
+        <a><span class="card-title">Report a Problem</span></a>
+      </div>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-image">
+      <img style=" opacity: 0.4;filter: alpha(opacity=50);" src="images/train.jpg">
+      <a><span class="card-title">Travel</span></a>
+    </div>
+  </div>
 </body>
-
-
-<script src="js/materialize.min.js"></script>
-<script src="js/index.js"></script>
-<script src="js/script.js"></script>
-<script src="js/logging.js"></script>
 
 </html>

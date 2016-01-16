@@ -1,60 +1,56 @@
-// Chrome's currently missing some useful cache methods,
-// this polyfill adds them.
-importScripts('js/serviceworker-cache-polyfill.js');
 importScripts('js/index.js');
 
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
+  'index.html',
+  'css/materialize.min.css',
+  'images/causeway.jpg',
+  'images/resturant.jpg',
+  'images/train.jpg',
+  'images/boat.jpg',
+  'images/titanic.jpg',
+  'images/',
+  'js/index.js',
+  'data.json',
+  'js/attractions.js',
+  'attractions.html',
+  'js/jquery-2.1.4.js',
+  'restaurants.html',
+  'js/restaurants.js',
+  'attractiondetail.html',
+  'js/attractionDetail.js',
+  'font',
+  'js/utils.js',
+  'js/materialize.min.js',
+  'report.html',
+  'js/report.js',
+  'images/pothole.jpg',
+  'jquery.easyWizard.js'
 
-// Here comes the install event!
-// This only happens once, when the browser sees this
-// version of the ServiceWorker for the first time.
+];
+
 self.addEventListener('install', function(event) {
-  // We pass a promise to event.waitUntil to signal how
-  // long install takes, and if it failed
+  // Perform install steps
   event.waitUntil(
-    // We open a cache…
-    caches.open('simple-sw-v1').then(function(cache) {
-      // And add resources to it
-      return cache.addAll([
-        'js/jquery-2.1.4.min.js',
-        'js/logging.js',
-        'js/materialize.min.js',
-        'js/script.js',
-        'js/serviceworker-cache-polyfill.js',
-        'css/materialize.min.css',
-        'index.html',
-        'font/material-design-icons',
-        'font/roboto',
-        'js/index.js',
-        'detail.html',
-        'js/detail.js',
-        'photo/gonzo.jpg',
-        'photo/Kermit_the_Frog/jpg',
-        'photo/MissPiggy.jpg'
-      ]);
-    })
-
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        return cache.addAll(urlsToCache);
+      })
   );
-
-  createDB();
-  getEmployeeData();
 
 });
 
-// The fetch event happens for the page request with the
-// ServiceWorker's scope, and any request made within that
-// page
 self.addEventListener('fetch', function(event) {
-  // Calling event.respondWith means we're in charge
-  // of providing the response. We pass in a promise
-  // that resolves with a response object
   event.respondWith(
-    // First we look for something in the caches that
-    // matches the request
-    caches.match(event.request).then(function(response) {
-      // If we get something, we return it, otherwise
-      // it's null, and we'll pass the request to
-      // fetch, which will use the network.
-      return response || fetch(event.request);
-    })
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+
+        return fetch(event.request);
+      }
+    )
   );
 });
