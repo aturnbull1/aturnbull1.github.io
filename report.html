@@ -1,41 +1,9 @@
 <html manifest="offline.appcache">
 <head>
-  <script>
-  var audioSource = null;
-  var videoSource = null;
-
-  function sortOutSources() {
-    MediaStreamTrack.getSources(function(sourceInfos) {
-
-
-        for (var i = 0; i != sourceInfos.length; ++i) {
-          var sourceInfo = sourceInfos[i];
-          if (sourceInfo.kind === 'audio') {
-            console.log(sourceInfo.id, sourceInfo.label || 'microphone');
-
-            audioSource = sourceInfo.id;
-          } else if (sourceInfo.kind === 'video') {
-            console.log(sourceInfo.id, sourceInfo.label || 'camera');
-            videoSource = sourceInfo.id;
-          } else {
-            console.log('Some other kind of source: ', sourceInfo);
-          }
-        }
-      });
-    }
-  sortOutSources();
-  </script>
   <link rel="stylesheet" href="css/materialize.min.css">
   <script src="js/jquery-2.1.4.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/jquery.easyWizard.js"></script>
-  <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>
-<script>
-  var client = new Dropbox.Client({ key: 'w1wtdc0sl9ejjmt' });
-  client.authenticate(function () {
-    console.log("authorised :)");
-  });
-  </script>
   <style>
 .easyWizardSteps {list-style:none;width:100%;overflow:hidden;margin:0;padding:0;border-bottom:1px solid #ccc;margin-bottom:20px}
 .easyWizardSteps li {font-size:18px;display:inline-block;padding:10px;color:#B0B1B3;margin-right:20px;}
@@ -163,6 +131,8 @@
   <script id = "jsbin-javascript">
   (function() {
 
+
+
     var streaming = false;
     var video        = document.querySelector('#video');
     var canvas       = document.querySelector('#canvas');
@@ -175,34 +145,60 @@
     var width = 320
     var height = 0;
 
+
+
+
     function takePhoto() {
-      navigator.getMedia = ( navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia);
 
-        navigator.getMedia(
-          {
-            video: {
-              optional: [{sourceId: videoSource}]
-            },
-            audio: false
-          },
-          function(stream) {
+      var audioSource = null;
+      var videoSource = null;
 
+      MediaStreamTrack.getSources(function(sourceInfos) {
 
-            if (navigator.mozGetUserMedia) {
-              video.mozSrcObject = stream;
+          for (var i = 0; i != sourceInfos.length; ++i) {
+            var sourceInfo = sourceInfos[i];
+            if (sourceInfo.kind === 'audio') {
+              console.log(sourceInfo.id, sourceInfo.label || 'microphone');
+
+              audioSource = sourceInfo.id;
+            } else if (sourceInfo.kind === 'video') {
+              console.log(sourceInfo.id, sourceInfo.label || 'camera');
+              videoSource = sourceInfo.id;
             } else {
-              var vendorURL = window.URL || window.webkitURL;
-              video.src = vendorURL.createObjectURL(stream);
+              console.log('Some other kind of source: ', sourceInfo);
             }
-            video.play();
-          },
-          function(err) {
-            console.log("An error occured! " + err);
           }
-        );
+
+          navigator.getMedia = ( navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia);
+
+            navigator.getMedia(
+              {
+                video: {
+                  optional: [{sourceId: videoSource}]
+                },
+                audio: false
+              },
+              function(stream) {
+
+
+                if (navigator.mozGetUserMedia) {
+                  video.mozSrcObject = stream;
+                } else {
+                  var vendorURL = window.URL || window.webkitURL;
+                  video.src = vendorURL.createObjectURL(stream);
+                }
+                video.play();
+              },
+              function(err) {
+                console.log("An error occured! " + err);
+              }
+            );
+        });
+
+
     }
 
       video.addEventListener('canplay', function(ev){
@@ -241,18 +237,13 @@
 
     function tryUploadFile(data) {
       console.log(data);
-      client.writeFile("image_" + data.name + "_" + data.desc + ".png", data.imageData, function(error, stat) {
-        if (error) {
-          console.log('Error: ' + error);
           if (!navigator.onLine) {
             alert('Unfortunately you have no connectivity . Your problem will be submitted when your connection is restored.');
-          }
-
-        } else {
+          } else {
           console.log('File written successfully!');
+          alert('Thanks! Your problem has been successfully submitted');
           localStorage.setItem('data', '');
-        };
-      });
+        }
   }
 
   function online(event) {
