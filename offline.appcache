@@ -22,6 +22,7 @@ js/attractionDetail.js
 js/utils.js
 js/materialize.min.js
 report.html
+report.html?
 js/report.js
 images/pothole.jpg
 js/jquery.easyWizard.js
