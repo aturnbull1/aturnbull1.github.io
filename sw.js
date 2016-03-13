@@ -25,7 +25,8 @@ var urlsToCache = [
   'report.html',
   'js/report.js',
   'images/pothole.jpg',
-  'jquery.easyWizard.js'
+  'jquery.easyWizard.js',
+  'report.html?'
 
 ];
 
