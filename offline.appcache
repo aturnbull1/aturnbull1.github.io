@@ -10,7 +10,6 @@ images/resturant.jpg
 images/train.jpg
 images/boat.jpg
 images/titanic.jpg
-images/
 js/index.js
 data.json
 js/attractions.js
@@ -22,6 +21,7 @@ js/attractionDetail.js
 js/utils.js
 js/materialize.min.js
 report.html
+report.html?
 js/report.js
 images/pothole.jpg
 js/jquery.easyWizard.js
