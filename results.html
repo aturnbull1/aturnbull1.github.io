@@ -2,11 +2,14 @@
 <html>
 <head>
 <!--Import Google Icon Font-->
-<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!--  Scripts-->
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+
+<script src="js/moment.min.js"></script>
+<script src="js/combodate.js"></script>
 
 <script type="text/javascript" src="materialize/js/materialize.js"></script>
 <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -50,7 +53,7 @@
 <div class='container'>
 
     <div class="col s12 m7">
-    <h2 class="header">Journey Planner</h2>
+    <h3 class="header center">Journey Planner</h3>
     <div class="card horizontal">
       <div class="card-image">
       </div>
@@ -72,11 +75,80 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="time" type="text" class="validate">
-          <label for="time">Time:</label>
+        <div class="input-field col s8">
+
+<table>
+            <tr>
+<td>
+<select>
+        <option value="" disabled selected></option>
+        <option value="1">00</option>
+        <option value="2">01</option>
+        <option value="3">02</option>
+        <option value="4">03</option>
+        <option value="5">04</option>
+        <option value="6">05</option>
+        <option value="7">06</option>
+        <option value="8">07</option>
+        <option value="9">08</option>
+        <option value="10">09</option>
+        <option value="11">10</option>
+        <option value="12">11</option>
+        <option value="13">12</option>
+        <option value="14">13</option>
+        <option value="15">14</option>
+        <option value="16">15</option>
+        <option value="17">16</option>
+        <option value="18">17</option>
+        <option value="19">18</option>
+        <option value="20">19</option>
+        <option value="21">20</option>
+        <option value="22">21</option>
+        <option value="23">22</option>
+        <option value="24">23</option>
+    </select></td>
+            <td>:</td>
+<td> <select>
+      <option value="" disabled selected></option>
+        <option value="25">00</option>
+        <option value="26">05</option>
+        <option value="27">10</option>
+        <option value="28">15</option>
+        <option value="29">20</option>
+        <option value="30">25</option>
+        <option value="31">30</option>
+        <option value="32">35</option>
+        <option value="33">40</option>
+        <option value="34">45</option>
+        <option value="35">50</option>
+        <option value="36">55</option>
+        <option value="37">60</option>
+    </select></td>
+</tr>
+    </table>
+  </div>
         </div>
-      </div>
+
+
+     <div class="input-field col s6">
+          <input type="date" class="datepicker" id="date">
+          <label for="date">Date</label>
+
+     </div>
+    <script>
+          $(document).ready(function() {
+    $('select').material_select();
+  });
+
+
+
+
+        $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
+    </script>
     <a class="waves-effect waves-light btn center"><i class="material-icons left">search</i>Search</a>
     </form>
 
