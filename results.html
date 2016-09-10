@@ -76,13 +76,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s8">
+        <div class="input-field col s12">
 
 <table>
+    Time:
             <tr>
 <td>
-<select>
-        <option value="" disabled selected></option>
+<select class="browser-default">
+        <option value="" disabled selected>12</option>
         <option value="1">00</option>
         <option value="2">01</option>
         <option value="3">02</option>
@@ -109,8 +110,8 @@
         <option value="24">23</option>
     </select></td>
             <td>:</td>
-<td> <select>
-      <option value="" disabled selected></option>
+<td> <select class="browser-default">
+      <option value="" disabled selected>00</option>
         <option value="25">00</option>
         <option value="26">05</option>
         <option value="27">10</option>
@@ -126,8 +127,8 @@
         <option value="37">60</option>
     </select></td>
 
-                <td> <select>
-      <option value="" disabled selected></option>
+                <td> <select class="browser-default">
+      <option value="" disabled selected>PM</option>
         <option value="38">AM</option>
         <option value="39">PM</option>
     </select></td>
@@ -165,7 +166,7 @@
     $("#results").show();
   }
     </script>
-    <a onclick = "showResults()" class="waves-effect waves-light btn center"><i class="material-icons left">search</i>Search</a>
+    <a onclick = "showResults()" class="btn center"><i class="material-icons left">search</i>Search</a>
     </form>
 
         </div>
