@@ -1,0 +1,12 @@
+{
+  "name": "Translink",
+  "short_name": "Translink",
+  "icons": [{
+        "src": "images/logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }],
+  "start_url": "index.html",
+  "display": "standalone",
+  "gcm_sender_id": "388703514734"
+}
